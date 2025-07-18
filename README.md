@@ -1,4 +1,4 @@
-# flatemate
+# FlatMate
 A simple cross-platform mobile first application to assist students and professionals in finding housing 
 
 ## Tech stack
