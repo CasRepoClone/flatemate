@@ -2,12 +2,12 @@ import { View, Text, Image, ImageBackground, Pressable, StyleSheet } from 'react
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function WelcomeScreen() {
+export default function Screentwo() {
   const router = useRouter();
 
   return (
     <ImageBackground
-      source={require('../assets/images/background-image.jpg')}
+      source={require('../../assets/images/background-image.jpg')}
       style={styles.background}
       resizeMode="cover"
     >
@@ -16,13 +16,21 @@ export default function WelcomeScreen() {
 
       <View style={styles.container}>
         <Image
-          source={require('../assets/images/brand-logo.png')}
+          source={require('../../assets/images/brand-logo.png')}
           style={styles.centerImage}
           resizeMode="contain"
         />
-        <Pressable style={styles.button} onPress={() => router.push('./login-flow/loginScreen')}>
+        {/* Oauth2 hook here please*/}
+        <Pressable style={styles.button}>
           <Ionicons name="arrow-forward" size={20} color="white" style={{ marginRight: 8 }} />
-          <Text style={styles.buttonText}>Let's go</Text>
+          <Text style={styles.buttonText}>Sign in with google</Text>
+          
+        </Pressable>
+
+        {/* Phone verification with firebase and transition to phone verif screens */}
+        <Pressable style={styles.button} onPress={() => router.push('./phoneInput')}>
+          <Ionicons name="arrow-forward" size={20} color="white" style={{ marginRight: 8 }} />
+          <Text style={styles.buttonText}>Sign in with number</Text>
         </Pressable>
       </View>
     </ImageBackground>
@@ -47,15 +55,15 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   centerImage: {
-    width: 375,
-    height: 375,
-    marginBottom: 30,
+    width: 130,
+    height: 130,
   },
   button: {
     flexDirection: 'row',
     backgroundColor: '#007AFF',
     paddingVertical: 14,
     paddingHorizontal: 24,
+    margin: 20,
     borderRadius: 12,
     alignItems: 'center',
     shadowColor: '#000',
