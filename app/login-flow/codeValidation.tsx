@@ -51,7 +51,7 @@ export default function CodeValidatiion() {
         {/* Resend the code */}
         <Pressable style={styles.button} onPress={() => router.push('./screen-two')}>
           <Ionicons name="arrow-forward" size={20} color="white" style={{ marginRight: 8 }} />
-          <Text style={styles.buttonText}>Sign in with number</Text>
+          <Text style={styles.buttonText}>Resend code</Text>
         </Pressable>
 
         {/* Go back a screen to change number */}

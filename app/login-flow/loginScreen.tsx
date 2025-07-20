@@ -1,9 +1,30 @@
+import React, { useEffect } from 'react';
 import { View, Text, Image, ImageBackground, Pressable, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from 'firebase/auth';
+import { auth } from './firebase/firebaseConfig'; // Adjust the path
+import { Platform } from 'react-native';
 
 export default function Screentwo() {
   const router = useRouter();
+  const provider = new GoogleAuthProvider();
+
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          router.push('./formProfession');
+        }
+      })
+      .catch((error) => {
+        console.error('Redirect sign-in error:', error);
+      });
+  }, []);
+
+  const signInWithGoogle = () => {
+    signInWithRedirect(auth, provider);
+  };
 
   return (
     <ImageBackground
@@ -11,23 +32,19 @@ export default function Screentwo() {
       style={styles.background}
       resizeMode="cover"
     >
-      {/* Overlay with 20% opacity black */}
       <View style={styles.overlay} />
-
       <View style={styles.container}>
         <Image
           source={require('../../assets/images/brand-logo.png')}
           style={styles.centerImage}
           resizeMode="contain"
         />
-        {/* Oauth2 hook here please*/}
-        <Pressable style={styles.button}>
+
+        <Pressable style={styles.button} onPress={signInWithGoogle}>
           <Ionicons name="arrow-forward" size={20} color="white" style={{ marginRight: 8 }} />
-          <Text style={styles.buttonText}>Sign in with google</Text>
-          
+          <Text style={styles.buttonText}>Sign in with Google</Text>
         </Pressable>
 
-        {/* Phone verification with firebase and transition to phone verif screens */}
         <Pressable style={styles.button} onPress={() => router.push('./phoneInput')}>
           <Ionicons name="arrow-forward" size={20} color="white" style={{ marginRight: 8 }} />
           <Text style={styles.buttonText}>Sign in with number</Text>
@@ -44,9 +61,9 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject, // overlays black over the screen to fake opacity on the background to not affect children
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: 'black',
-    opacity: 0.8, // 20% opacity (100-80=20)
+    opacity: 0.8,
   },
   container: {
     flex: 1,
