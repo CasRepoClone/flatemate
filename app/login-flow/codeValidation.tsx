@@ -43,7 +43,7 @@ export default function CodeValidatiion() {
         />
 
         {/* Validate input and next screen */}
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => router.push('./formProfession')}>
           <Ionicons name="arrow-forward" size={20} color="white" style={{ marginRight: 8 }} />
           <Text style={styles.buttonText}>Continue</Text>
         </Pressable>

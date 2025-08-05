@@ -1,0 +1,26 @@
+{
+    "username": {
+        "passwordHash": "SDFIJO3OIJWF",
+        "dateCreated": "01:08:25",
+
+        "preferences":{
+            "pets": false,
+            "smoking": false,
+            "same_sex": false,
+            "religion": "christianity",
+            "moveOn": "05:08:25"
+
+        },
+        "messages": {
+            "message": {
+                "to": "someone",
+                "sentAt": "01:08:2025:16:33",
+                "content": "hey i was interested in that property"
+            }
+        },
+        "contacts": {
+            "0": "someone",
+            "1": "anotherLandlord"
+        }
+    }
+}
