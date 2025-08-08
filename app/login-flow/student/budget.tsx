@@ -58,7 +58,7 @@ export default function budget() {
         </ImageBackground>
     );
 }
-
+// STYLES
 const styles = StyleSheet.create({
     background: {
         flex: 1,
